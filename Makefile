@@ -6,10 +6,9 @@
 #    By: mupolat <mupolat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 01:03:21 by mupolat           #+#    #+#              #
-#    Updated: 2023/09/18 13:34:24 by mupolat          ###   ########.fr        #
+#    Updated: 2023/09/18 16:09:00 by mupolat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 FILES = push_swap.c  		\
  		check_error.c 	\
@@ -29,9 +28,9 @@ all : ${NAME}
 ${NAME}: ${OBJS}
 	${CC} ${FLAGS} ${OBJS} -o ${NAME}
 fclean :
-	rm -rf ${OBJS} ${BOBJS} ${NAME}
+	rm -rf ${OBJS} ${NAME}
 clean : 
-	rm -rf ${OBJS} ${BOBJS} 
+	rm -rf ${OBJS}
 %.o:%.c
 	${CC} -c $^ ${FLAGS} -o $@
 
