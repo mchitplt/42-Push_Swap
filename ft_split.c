@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mupolat < mupolat@student.42.fr>           +#+  +:+       +#+        */
+/*   By: mupolat <mupolat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 01:02:36 by mupolat           #+#    #+#             */
-/*   Updated: 2023/09/08 01:02:36 by mupolat          ###   ########.fr       */
+/*   Created: 2023/09/18 11:14:01 by mupolat           #+#    #+#             */
+/*   Updated: 2023/09/18 11:14:20 by mupolat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include    "push_swap.h"
+#include "push_swap.h"
 
 size_t	ft_strlen(const char *s)
 {

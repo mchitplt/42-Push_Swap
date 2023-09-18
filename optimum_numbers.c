@@ -3,63 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   optimum_numbers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mupolat < mupolat@student.42.fr>           +#+  +:+       +#+        */
+/*   By: mupolat <mupolat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 01:03:38 by mupolat           #+#    #+#             */
-/*   Updated: 2023/09/08 01:03:38 by mupolat          ###   ########.fr       */
+/*   Updated: 2023/09/18 11:27:26 by mupolat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-#include    "push_swap.h"
-
-int *sorted_numbers(int *a, int ta)
+int	*sorted_numbers(int *a, int ta)
 {
-    int i = 1;
-    int j = 0;
-    int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
-    while (j < ta)
-    {
-        while (i < ta)
-        {
-            if (a[j] > a[i])
-            {
-                tmp = a[i];
-                a[i] = a[j];
-                a[j] = tmp;
-            }
-            i++;
-        }
-        j++;
-        i = j;
-    }
-    return (a);
+	i = 1;
+	j = 0;
+	while (j < ta)
+	{
+		while (i < ta)
+		{
+			if (a[j] > a[i])
+			{
+				tmp = a[i];
+				a[i] = a[j];
+				a[j] = tmp;
+			}
+			i++;
+		}
+		j++;
+		i = j;
+	}
+	return (a);
 }
 
-int logaritma(int ta)
+int	logaritma(int ta)
 {
-    int i = 0;
+	int	i;
 
-    while (ta > 0)
-    {
-        ta /= 2;
-        i++;
-    }
-    return (i);
+	i = 0;
+	while (ta > 0)
+	{
+		ta /= 2;
+		i++;
+	}
+	return (i);
 }
 
-int square_root(int ta)
+int	square_root(int ta)
 {
-    int i = 3;
+	int	i;
 
-    while (1)
-    {
-        if (i * i >= ta)
-            break;
-        i++;
-    }
-    return (i);
+	i = 3;
+	while (1)
+	{
+		if (i * i >= ta)
+		{
+			break ;
+		}
+		i++;
+	}
+	return (i);
 }
 
 void	butterfly_infrastructure(t_stack *stack, int flag)

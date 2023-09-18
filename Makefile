@@ -3,22 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mupolat < mupolat@student.42.fr>           +#+  +:+       +#+         #
+#    By: mupolat <mupolat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 01:03:21 by mupolat           #+#    #+#              #
-#    Updated: 2023/09/08 01:03:21 by mupolat          ###   ########.fr        #
+#    Updated: 2023/09/18 13:34:24 by mupolat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-FILES = main.c  		\
+FILES = push_swap.c  		\
  		check_error.c 	\
 		move_functions.c 			\
 		optimum_numbers.c 	\
 		helper_function.c 	\
 		utils.c 			\
 		ft_split.c 			\
-		parse.c 	\
+		parse.c				\
+		utils2.c				\
 		
 NAME = push_swap
 CC = gcc

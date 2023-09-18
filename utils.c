@@ -3,100 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mupolat < mupolat@student.42.fr>           +#+  +:+       +#+        */
+/*   By: mupolat <mupolat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 01:04:06 by mupolat           #+#    #+#             */
-/*   Updated: 2023/09/08 01:04:06 by mupolat          ###   ########.fr       */
+/*   Updated: 2023/09/18 13:35:38 by mupolat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-#include    "push_swap.h"
-
-int ft_atoi(char *str)
+int	ft_isdigit(int c)
 {
-    int i = 0;
-    long result = 0;
-    int sign = 1;
+	return (c <= '9' && c >= '0');
+}
 
-    if (str[0] == '-' || str[0] == '+')
-    {
-        if (str[1] == '\0')
-            show_error();
-        if (str[0] == '-')
-            sign = - sign;
-        i++;
-    }
-    while (str[i])
-    {
-        if (str[i] < '0' || str[i] > '9')
-            show_error();
-        result = (result * 10) + str[i++] - '0';
-    }
-    result = result * sign;
-    if ((result <= -2147483648) || (result >= 2147483647))
+void	ft_check(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (!ft_isdigit(str[i]) && str[i] != '+' && str[i] != '-')
 		show_error();
-    return (result);
-}
-
-void    ft_putstr_fd(char *s, int fd)
-{
-    int i = 0;
-
-    if (!s)
-        return;
-    while (s[i])
-    {
-        write (fd, &s[i], 1);
-        i++;
-    }
-}
-
-void    butterfly_last_inf(t_stack *stack, int flag)
-{
-    if (flag == 1)
-    {
-        ft_putstr_fd("pa\n", 1);
-        ft_push_a(stack, stack->na, stack->nb);
-        stack->nb--;
-        stack->na++;
-    }
-    if(flag == 2)
-    {
-        ft_putstr_fd("rb\n", 1);
-        ft_rotate(stack, 'b', stack->nb);
-    }
-    if (flag == 3)
+	if ((str[i] == '+' || str[i] == '-') && !ft_isdigit(str[i + 1]))
+		show_error();
+	i = 1;
+	while (str[i])
 	{
-		ft_putstr_fd("rrb\n", 1);
-		ft_reverse_rotate(stack, 'b', stack->nb);
+		if (!ft_isdigit(str[i]))
+		{
+			show_error();
+		}
+		i++;
 	}
 }
 
-void	sort_5_inf(t_stack *stack, int len, int i, int j)
+int	ft_atoi(char *str)
 {
-	while (j < 2)
+	long	i;
+	long	sign;
+	long	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	ft_check(str);
+	while (str[i] == 32 || (str[i] <= 13 && str[i] >= 9))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (stack->a[0] == stack->sorted[j])
-		{
-			butterfly_infrastructure(stack, 2);
-			j++;
-			i = 0;
-		}
-		else
-		{
-			while (stack->a[i] != stack->sorted[j])
-				i++;
-			if (i < len / 2)
-				butterfly_infrastructure(stack, 3);
-			else if (i >= len / 2)
-			{
-				ft_putstr_fd("rra\n", 1);
-				ft_reverse_rotate(stack, 'a', stack->na);
-			}
-		}
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	sort_3(stack);
-	while (stack->nb > 0)
-		butterfly_last_inf(stack, 1);
+	while (str[i] <= '9' && str[i] >= '0')
+	{
+		result = result * 10 + (str[i++] - '0');
+		if (result > 2147483648)
+			show_error();
+	}
+	if ((result * sign) == 2147483648)
+		show_error();
+	return ((int)result * sign);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
